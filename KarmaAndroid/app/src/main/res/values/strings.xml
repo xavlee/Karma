@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Karma</string>
+    <string name="tab_text_1">Feed Me</string>
+    <string name="tab_text_2">My Feed</string>
+    <string name="tab_text_3">My Orders</string>
+    <string name="login_button_text">Login</string>
+    <string name="sign_up_button_text">Don\'t have an account? Sign Up</string>
+    <string name="vendor_sign_in_text">Are you a vendor? Sign in here</string>
+    <string name="navigate_customer_login_text">Not a vendor?</string>
+    <string name="pass_empty_error">Invalid password</string>
+    <string name="email_empty_error">Invalid email</string>
+    <string name="dialog_fire_missiles">Fire missiles?</string>
+    <string name="fire">Fire</string>
+    <string name="cancel">Cancel</string>
+    <string name="login_error_message">Error logging in</string>
+    <string name="ok">OK</string>
+    <string name="register_button_text">Create Account</string>
+    <string name="customer_sign_in_text">Customer? Log in here</string>
+    <string name="finish_vendor_order_text">complete</string>
+    <string name="orderTitleText">Order Number</string>
+    <string name="default_order_code_text">ORDER_CODE</string>
+    <string name="order_code_title">Order Code: %s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

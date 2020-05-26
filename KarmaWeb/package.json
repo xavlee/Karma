@@ -1,0 +1,27 @@
+{
+  "name": "karma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "async": "^3.2.0",
+    "body-parser": "^1.19.0",
+    "chart": "^0.1.2",
+    "chart.js": "^2.9.3",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "isodate": "^0.1.4",
+    "mongoose": "^5.9.6",
+    "multer": "^1.4.2",
+    "node": "^13.12.0",
+    "node-modules": "^1.0.1",
+    "stripe": "^8.44.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

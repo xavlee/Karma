@@ -1,0 +1,110 @@
+var bcrypt = require('bcrypt');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+/***************************************/
+
+passport.use(new LocalStrategy({
+	usernameField : "email",
+	passwordField : "password"
+}, function(email, password) {
+	Vendor.findOne({email : email}, function(err, vendor) {
+		if (err) {
+			console.log("caught an error " + err);
+		} else if (!vendor || !bcrypt.compareSync(password, vendor.passwordHash)) {
+			res.send({message : "invalid email and/or password"});
+		} else {
+			res.send({message : "login successful", vendor : vendor});
+		}
+	})
+}));
+
+passport.use('signup-local', new LocalStrategy({
+	usernameField : "email",
+	passwordField : "password"
+}, function(email, password) {
+	Vendor.findOne({email : email}, function(err, user) {
+		if (err) {
+			console.log("caught an error: " + err);
+		} else if (user) {
+			console.log("vendor already exists");
+			res.send({message : "user already exists"});
+		} else {
+			var newVendor = new Vendor ({
+				email : req.body.email,
+				password : bcrypt.hashSync(req.body.password, 10),
+				vendorName : req.body.vendorName,
+				owner : req.body.owner,
+				description : req.body.description,
+				});
+		
+			// save the person to the database
+			newVendor.save( (err) => { 
+				res.send({newVendor : newVendor});
+			}); 
+		}
+	});
+}));
+
+passport.serializeUser(function(vendor) {
+	next(null, vendor._id);
+});
+
+passport.deserializeUser(function(id) {
+	Vendor.findById(id, function(err, vendor) {
+		next(err, vendor);
+	});
+})
+
+// route for creating a new vendor
+// this is the action of the "create new vendor" form
+app.use('/signupvendor', (req, res) => {
+		Vendor.findOne({email : req.body.email}, function(err, user) {
+			if (err) {
+				console.log("caught an error: " + err);
+			} else if (user) {
+				console.log("vendor already exists");
+				res.send({message : "user already exists"});
+			} else {
+				var newVendor = new Vendor ({
+					email : req.body.email,
+					password : bcrypt.hashSync(req.body.password, 10),
+					vendorName : req.body.vendorName,
+					owner : req.body.owner,
+					description : req.body.description,
+					});
+			
+				// save the person to the database
+				newVendor.save( (err) => { 
+					if (err) {
+						res.type('html').status(200);
+						res.write('uh oh: ' + err);
+						console.log(err);
+						res.end();
+					}
+					else {
+						// display the "successfull created" page using EJS
+						res.render('created', {vendor : newVendor});
+					}
+				}); 
+			};
+		});
+	});
+
+app.post('/loginvendor', 
+	passport.authenticate('local', { failureRedirect: '/' }), 
+	function(req, res) {
+		res.redirect('/homevendor');
+	});
+
+app.post('/signupvendor', passport.authenticate('signup-local', { failureRedirect: '/' }), function(req, res) {
+	res.redirect('/homevendor');
+});
+
+app.get('/signupvendor', function(req,res) {
+	res.render('signupvendor');
+})
+
+app.get('/homevendor', function(req, res) {
+	res.render('homevendor');
+});

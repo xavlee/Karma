@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/list"-->
+<!--    android:name="edu.upenn.cis350.karma.VendorsFragment"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:layout_marginLeft="16dp"-->
+<!--    android:layout_marginRight="16dp"-->
+<!--    app:layoutManager="LinearLayoutManager"-->
+<!--    tools:context=".VendorsFragment"-->
+<!--    tools:listitem="@layout/fragment_vendors" />-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/vendor_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Vendor Name"
+            android:textAppearance="@style/vendor_name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/vendor_location"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Vendor Location"
+            android:textAppearance="@style/vendor_location"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/vendor_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vendor Description"
+            android:textAppearance="@style/vendor_description" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        android:text="View Menu"
+        android:background="@drawable/button_rounded"
+        android:textColor="#FFFFFF" />
+
+
+
+</LinearLayout>

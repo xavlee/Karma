@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/activity_search">
+
+
+    <TextView
+        android:id="@+id/emailMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="20dp"
+        android:text="Enter your friend's email:"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/email_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="@dimen/et_horizontal_spacing"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginRight="@dimen/et_horizontal_spacing"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:autofillHints="Friend's Email"
+        tools:ignore="LabelFor" />
+
+    <Button
+        android:id="@+id/sButton"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="380dp"
+        android:text="Search" />
+
+</android.widget.RelativeLayout>

@@ -1,0 +1,18 @@
+Successfully registered new vendor:
+<p>
+<b>Name:</b> <%= vendor.vendorName %>
+<br>
+<b>Email:</b> <%= vendor.email %>
+<br>
+<b>Food Truck:</b> <%= vendor.truckName %>
+<br>
+<b>Owner:</b> <%= vendor.owner %>
+<br>
+<b>Description:</b> <%= vendor.description %>
+<br>
+<b>Location:</b> <%= vendor.location %>
+<p>
+<div>
+    <button id="stripe-button" onClick="location.href = 'https://connect.stripe.com/express/oauth/authorize?client_id=ca_H4FnlEj9ex9F3CMRJNF4ObnHhPUb6Sug&state=<%= vendor._id %>&stripe_user[email]=<%= vendor.email %>'">Connect with Stripe (OAuth)</button> 
+</div>
+</p>

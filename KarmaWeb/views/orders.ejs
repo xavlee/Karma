@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Karma</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Orders for <%=vendorName%></h1>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2> INCOMPLETE : </h2>
+                    <ul>
+                        <% for (var i = 0; i < incompleteOrders.length; i++) { %>
+                        
+                        <li><%= incompleteOrders[i].user %>, total : $<%= incompleteOrders[i].total %>, (<%=incompleteOrders[i].code%>)</li>
+                        <ul>
+                            <% for (var j = 0; j < incompleteOrders[i].items.length; j++) {%>
+                            
+                            <li><%= incompleteOrders[i].items[j].item %>: $<%= incompleteOrders[i].items[j].price %>; 
+                                Quantity : <%=incompleteOrders[i].items[j].quantity%></li>
+                            
+                            <% } %>
+                            </ul>
+                            <br />
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h2> COMPLETE : </h2>
+                    <ul>
+                        <% for (var i = 0; i < completeOrders.length; i++) { %>
+                        
+                        <li><%= completeOrders[i].user %>, total : $<%= completeOrders[i].total %>, (<%=completeOrders[i].code%>)</li>
+                        <ul>
+                            <% for (var j = 0; j < completeOrders[i].items.length; j++) {%>
+                            
+                            <li><%= completeOrders[i].items[j].item %>: $<%= completeOrders[i].items[j].price %>; 
+                                Quantity : <%=completeOrders[i].items[j].quantity%></li>
+                            
+                            <% } %>
+                            </ul>
+                            <br />
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       <!--
+           Select Timeframe:
+        <form action="/graph" method="post">
+            <select id="timeframe" name="timeframe">
+                <option value="day">day</option>
+                <option value="week">week</option>
+                <option value="month">month</option>
+            </select>
+            <input type="submit" value="show graph!">
+        
+            <br />>---> 
+        </form>
+        <div class="container" align="center">
+            <canvas id="line-chart" width="800" height="450"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+            <script>
+                new Chart(document.getElementById("line-chart"), {
+                    type: 'line',
+                    data: {
+                        labels: <%-JSON.stringify(labels)%>,
+                        yAxisID: "my-y-axis",
+                        datasets: [ 
+                        { 
+                            lineTension : 0,
+                            data: <%-JSON.stringify(dataset)%>,
+                            label: "Orders",
+                            borderColor: "#3e95cd",
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        title: {
+                        display: true,
+                        text: 'Number of Orders',
+                        scales: {
+                            yAxes: [{
+                                id: "my-y-axis",
+                                type: 'linear',
+                                position: 'left',
+                                ticks: {
+                                    min : 0,
+                                }
+                            }]
+                        }
+                    }
+                    }
+                });
+            </script>
+        </div>
+        
+        <hr>
+    
+        <a href='/home'>return home</a>
+    </div>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
